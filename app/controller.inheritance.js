@@ -1,8 +1,7 @@
 'use strict';
 (function(){
 	
-	function BaseController(service){
-		var _self = this;
+	function BaseController(_self, service){
 		_self.entitys = [];
 
 		_self.listar = function(){
@@ -14,7 +13,8 @@
 
 	function MainController($controller, contatosService){
 		var _self = this;
-		angular.extend(_self, $controller('BaseController', {service: contatosService}));
+		
+		angular.extend(_self, $controller('BaseController', {_self: _self, service: contatosService}));
 	}
 
 	MainController.$inject = ['$controller', 'contatosService'];
