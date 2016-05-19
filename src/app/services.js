@@ -1,28 +1,29 @@
 'use strict';
 (function(){
 
-	function ContatosService($http){
+	function BaseService(_self, $http){
 
-		var service = {};
-		
 		var apiUrl = "https://api.mongolab.com/api/1/databases/genericstests/collections";
 		var apiKey = "FFr7JZSr2qjwk47Z5ZSG0HU-fUjhNOuQ";
 
-		service.list = function(){
+		_self.list = function(){
 			return $http.get(apiUrl + "/contatos", { params: { apiKey: apiKey } });
-			//return service.listEntity;
 		};
 
-		service.save = function(entity){
+		_self.save = function(entity){
 			return $http.post(apiUrl + "/contatos", entity, { params: { apiKey: apiKey } });
-			//contatos.push(entity);
 		};
 
-		service.remove = function(entity){
+		_self.remove = function(entity){
 			return $http.delete(apiUrl + "/contatos/" + entity._id.$oid, { params: { apiKey: apiKey, q: entity } });
-			//var index = contatos.indexOf(entity);
-			//contatos.splice(index, 1);
 		};
+
+	}
+
+	function ContatosService($http){
+
+		var service = {};
+		BaseService(service, $http);
 
 		return service;
 	};

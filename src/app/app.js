@@ -1,6 +1,6 @@
 'use strict';
 (function(){
-	angular.module('genericsapp11', []);
+	angular.module('genericsapp', []);
 
 	angular.module('genericsapp')
         .config(['$httpProvider', function ($httpProvider) {

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	
-	<title>Title of the document</title>
+	<title>Generics Tests</title>
 </head>
 
 <body ng-app="genericsapp" ng-controller="MainController as ma">
@@ -14,7 +14,7 @@
 		<button type="submit" >Salvar</button>
 	</form>
 	
-	<button ng-click="ma.listar()">Load</button>
+	<button ng-click="ma.listar()">Carregar</button>
 	<ul>
 		<li ng-repeat="contato in ma.entitys">{{contato.nome}} - {{contato.fone}} <button ng-click="ma.apagar(contato)">apagar</button></li>
 	</ul>	
@@ -22,8 +22,8 @@
 	<script src="bower_components/angular/angular.min.js"></script>
 
 	<script src="app/app.js"></script>
-	<script src="app/controller.inheritance.js"></script>
-	<script src="app/service.contatos.js"></script>
+	<script src="app/controllers.js"></script>
+	<script src="app/services.js"></script>
 </body>
 
 </html> 

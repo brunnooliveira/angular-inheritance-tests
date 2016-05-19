@@ -29,8 +29,7 @@
 
 	function MainController($controller, contatosService){
 		var _self = this;
-		
-		angular.extend(_self, $controller('BaseController', {_self: _self, service: contatosService}));
+		BaseController(_self, contatosService);
 	}
 
 	MainController.$inject = ['$controller', 'contatosService'];
