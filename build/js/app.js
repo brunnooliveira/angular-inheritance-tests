@@ -1,0 +1,1 @@
+"use strict";!function(){angular.module("genericsapp11",[]),angular.module("genericsapp").config(["$httpProvider",function(e){e.defaults.useXDomain=!0,delete e.defaults.headers.common["X-Requested-With"]}])}();

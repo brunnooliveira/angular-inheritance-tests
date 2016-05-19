@@ -1,0 +1,29 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Title of the document</title>
+</head>
+
+<body ng-app="genericsapp" ng-controller="MainController as ma">
+
+	<form ng-submit="ma.salvar(ma.entity)">
+		Nome: <input type="text" ng-model="ma.entity.nome"  />
+		Fone: <input type="text" ng-model="ma.entity.fone"  />
+		<button type="submit" >Salvar</button>
+	</form>
+	
+	<button ng-click="ma.listar()">Load</button>
+	<ul>
+		<li ng-repeat="contato in ma.entitys">{{contato.nome}} - {{contato.fone}} <button ng-click="ma.apagar(contato)">apagar</button></li>
+	</ul>	
+
+	<script src="bower_components/angular/angular.min.js"></script>
+
+	<script src="app/app.js"></script>
+	<script src="app/controller.inheritance.js"></script>
+	<script src="app/service.contatos.js"></script>
+</body>
+
+</html> 

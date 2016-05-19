@@ -1,4 +1,5 @@
 {
+	"directory": "src/bower_components/",
 	"registry": {
 	    "search": [
 	      "http://bower.herokuapp.com"
