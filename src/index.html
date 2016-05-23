@@ -2,28 +2,81 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+
+	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		.jumbotron {
+			width: 600px;
+			/*text-align: center;*/
+			margin-top: 20px;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 15px;
+		}
+
+		.form-control {
+			margin-bottom: 5px;
+		}
+	</style>
 	
 	<title>Generics Tests</title>
 </head>
 
 <body ng-app="genericsapp" ng-controller="MainController as ma">
 
-	<form ng-submit="ma.salvar(ma.entity)">
-		Nome: <input type="text" ng-model="ma.entity.nome"  />
-		Fone: <input type="text" ng-model="ma.entity.fone"  />
-		<button type="submit" >Salvar</button>
-	</form>
-	
-	<button ng-click="ma.listar()">Carregar</button>
-	<ul>
-		<li ng-repeat="contato in ma.entitys">{{contato.nome}} - {{contato.fone}} <button ng-click="ma.apagar(contato)">apagar</button></li>
-	</ul>	
+    <div data-loading class="modal fade bs-example-modal-sm" id="myPleaseWait" tabindex="-1"
+	    role="dialog" aria-hidden="true" data-backdrop="static">
+	    <div class="modal-dialog modal-sm">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h4 class="modal-title">
+	                    <span class="glyphicon glyphicon-time">
+	                    </span>Please Wait
+	                 </h4>
+	            </div>
+	            <div class="modal-body">
+	                <div class="progress">
+	                    <div class="progress-bar progress-bar-info
+	                    progress-bar-striped active"
+	                    style="width: 100%">
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+		
+	<div class="jumbotron">
 
+		<form name="contatoForm" ng-submit="ma.salvar(ma.entity)">
+			<input class="form-control" type="text" ng-model="ma.entity.nome" name="nome" placeholder="Nome" ng-required="true" />
+			<input class="form-control" type="text" ng-model="ma.entity.fone" name="telefone" placeholder="Telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/"/>
+			<button type="submit" class="btn btn-primary btn-block" >Salvar</button>
+		</form>
+
+		<table ng-show="ma.entitys.length > 0" class="table table-striped">
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+				<th></th>
+			</tr>
+			<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in ma.entitys">
+				<td>{{contato.nome}}</td>
+				<td>{{contato.fone}}</td>
+				<td><span class="glyphicon glyphicon-remove" ng-click="ma.apagar(contato)" /></td>
+			</tr>
+		</table>
+
+	</div>
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="bower_components/angular/angular.min.js"></script>
-
+	
 	<script src="app/app.js"></script>
 	<script src="app/controllers.js"></script>
 	<script src="app/services.js"></script>
+	<script src="app/directives.js"></script>
 </body>
 
 </html> 
